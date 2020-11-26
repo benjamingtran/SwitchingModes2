@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SwitchingModes</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="training_mode">Training Mode</string>
+</resources>
