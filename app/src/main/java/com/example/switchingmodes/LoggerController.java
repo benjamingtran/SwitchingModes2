@@ -5,14 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.hardware.SensorManager;
-import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
 import java.io.File;
 import java.io.IOException;
 
-public class LoggingMode extends AppCompatActivity {
+public class LoggerController extends AppCompatActivity {
 
     private TextView txtSize;
     private TextView lmode;
@@ -23,12 +22,12 @@ public class LoggingMode extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.logger_view);
         txtSize = (TextView) findViewById(R.id.keySpy);
         txtSize.setTextSize(30);
         lmode = (TextView) findViewById(R.id.lmode);
         lmode.setTextSize(30);
-        File f = new File(getExternalFilesDir(null), "loggerdemo.txt");
+        File f = new File(getExternalFilesDir(null), "logsen.txt");
         try {
             logMod = new LoggerModel((SensorManager) getSystemService(SENSOR_SERVICE), f);
         } catch (IOException e) {

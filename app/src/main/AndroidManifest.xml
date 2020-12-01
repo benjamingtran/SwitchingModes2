@@ -17,10 +17,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TrainingMode"
+            android:name=".TDGController"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".LoggingMode"
+            android:name=".LoggerController"
             android:parentActivityName=".MainActivity" />
     </application>
 

@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openActivity2() {
-        Intent intent = new Intent(this, TrainingMode.class);
+        Intent intent = new Intent(this, TDGController.class);
         startActivity(intent);
 
     }
     private void openActivity3() {
-        Intent intent = new Intent(this, LoggingMode.class);
+        Intent intent = new Intent(this, LoggerController.class);
         startActivity(intent);
 
     }
