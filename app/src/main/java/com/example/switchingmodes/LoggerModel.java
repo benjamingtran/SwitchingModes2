@@ -62,27 +62,8 @@ public class LoggerModel {
                 fos.write(buf, 0, length);
             }
 
+            fos.close();
 
-
-
-            //Files.copy(is,path);
-
-            //File exportFile = new File("/storage/emulated/0/Download/keyspy/loggerdemo.logger");
-            //Intent i = new Intent(Intent.ACTION_CREATE_DOCUMENT);
-
-            /*
-            try {
-                //Path path = FileSystems.getDefault().getPath("keyspy", "logger", "foo.bar");
-
-                //Files.createDirectories(path.getParent());
-                //Files.createFile(path);
-                //new File(path.toString());
-
-                //Files.copy(is, path);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-             */
             System.out.println("off");
             //return i;
         }

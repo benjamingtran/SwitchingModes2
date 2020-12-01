@@ -1,16 +1,19 @@
 package com.example.switchingmodes;
 
-
 import android.hardware.Sensor;
 import android.hardware.SensorDirectChannel;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.MemoryFile;
 
-import java.io.DataOutputStream;
+import androidx.annotation.RequiresApi;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -41,6 +44,7 @@ public class TDGModel {
     private File inputFile;
     private Queue<PressEvent> peQ;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public TDGModel(SensorManager sm, File senf, File inpf) throws IOException {
         mSensorManager = sm;
         sensorFile = senf;
@@ -58,18 +62,19 @@ public class TDGModel {
         peQ.add(new PressEvent(pressed,timestamp));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void setLogging(boolean b) throws IOException {
         if(b)
         {
             mSDC.configure(mGyro,SensorDirectChannel.RATE_NORMAL);
             System.out.println("on");
-            //return null;
+
         }
         else
         {
             mSDC.configure(mGyro,SensorDirectChannel.RATE_STOP);
             InputStream is = mem.getInputStream();
-            //Path path;
+
             FileOutputStream fos = new FileOutputStream(sensorFile);
 
             byte[] buf = new byte[8192];
@@ -79,39 +84,26 @@ public class TDGModel {
             }
             fos.close();
             FileOutputStream fos2 = new FileOutputStream(inputFile);
-            DataOutputStream dos2 = new DataOutputStream(fos2);
+
+            ByteBuffer bb2 = ByteBuffer.allocate(10);
+            bb2.order(ByteOrder.LITTLE_ENDIAN);
+            bb2.clear();
             while(!peQ.isEmpty()){
                 PressEvent pe = peQ.remove();
-                dos2.writeChar(pe.getPress());
-                dos2.writeLong(pe.getTimestamp());
+
+                bb2.putLong(pe.getTimestamp());
+                bb2.putChar(pe.getPress());
+
+                fos2.write(bb2.array());
+                bb2.clear();
+
+
 
             }
-            dos2.close();
             fos2.close();
 
-
-
-
-            //Files.copy(is,path);
-
-            //File exportFile = new File("/storage/emulated/0/Download/keyspy/loggerdemo.logger");
-            //Intent i = new Intent(Intent.ACTION_CREATE_DOCUMENT);
-
-            /*
-            try {
-                //Path path = FileSystems.getDefault().getPath("keyspy", "logger", "foo.bar");
-
-                //Files.createDirectories(path.getParent());
-                //Files.createFile(path);
-                //new File(path.toString());
-
-                //Files.copy(is, path);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-             */
             System.out.println("off");
-            //return i;
+
         }
     }
 

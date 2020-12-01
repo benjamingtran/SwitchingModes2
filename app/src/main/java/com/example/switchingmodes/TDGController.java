@@ -1,5 +1,6 @@
 package com.example.switchingmodes;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.hardware.SensorManager;
@@ -21,6 +22,7 @@ public class TDGController extends AppCompatActivity {
     private Button btnInput1;
     private Button btnInput2;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +90,7 @@ public class TDGController extends AppCompatActivity {
         );*/
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onDestroy() {
         try {
