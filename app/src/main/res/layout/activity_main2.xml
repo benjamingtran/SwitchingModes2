@@ -32,7 +32,7 @@
         android:text="Training Mode" />
 
     <ToggleButton
-        android:id="@+id/toggleButton"
+        android:id="@+id/tbLogMode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

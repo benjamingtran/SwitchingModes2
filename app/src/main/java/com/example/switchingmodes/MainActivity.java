@@ -11,12 +11,15 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private Button tmButton;
+    private Button lmButton;
     TextView txtSize;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tmButton = (Button) findViewById(R.id.trainingButton);
+        lmButton = (Button) findViewById(R.id.loggingButton);
+
         txtSize = (TextView) findViewById(R.id.keySpy);
         txtSize.setTextSize(40);
         tmButton.setOnClickListener(new View.OnClickListener() {
@@ -25,11 +28,22 @@ public class MainActivity extends AppCompatActivity {
                 openActivity2();
             }
         });
+        lmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity3();
+            }
+        });
 
     }
 
     private void openActivity2() {
-        Intent intent = new Intent(this, MainActivity2.class);
+        Intent intent = new Intent(this, TrainingMode.class);
+        startActivity(intent);
+
+    }
+    private void openActivity3() {
+        Intent intent = new Intent(this, LoggingMode.class);
         startActivity(intent);
 
     }
