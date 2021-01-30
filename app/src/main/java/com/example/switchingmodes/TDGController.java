@@ -79,10 +79,11 @@ public class TDGController extends AppCompatActivity {
         keyboardSetup();
 
         for (Map.Entry<Character, Button> entry : buttons.entrySet()) {
+            Character c = entry.getKey();
             entry.getValue().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    tdgMod.input(entry.getKey(), SystemClock.elapsedRealtimeNanos());
+                    tdgMod.input(c, SystemClock.elapsedRealtimeNanos());
                 }
             });
         }
