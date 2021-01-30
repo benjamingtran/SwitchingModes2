@@ -50,8 +50,9 @@ public class TDGModel {
         sensorFile = senf;
         inputFile = inpf;
         mGyro = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+        int entries = 100000;
 
-        mem = new MemoryFile(null, 1048575);
+        mem = new MemoryFile(null, 104*entries);
 
         mSDC = sm.createDirectChannel(mem);
         peQ  = new LinkedList<PressEvent>();

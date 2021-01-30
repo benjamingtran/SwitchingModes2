@@ -17,8 +17,7 @@ import java.io.IOException;
 
 public class TDGController extends AppCompatActivity {
     private TDGModel tdgMod;
-    //private ToggleButton tbLogMode;
-    //File f;
+
     private Button btnInput1;
     private Button btnInput2;
 
@@ -26,9 +25,11 @@ public class TDGController extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        File senf = new File(getExternalFilesDir(null), "tdgsen.txt");
-        File inpf = new File(getExternalFilesDir(null), "tdginp.txt");
+        String timestr = SystemClock.elapsedRealtimeNanos()+"";
+        String senfn = timestr+".tdg";
+        String inpfn = timestr+".inp";
+        File senf = new File(getExternalFilesDir(null), senfn);
+        File inpf = new File(getExternalFilesDir(null), inpfn);
         try {
             tdgMod = new TDGModel((SensorManager) getSystemService(SENSOR_SERVICE), senf, inpf);
         } catch (IOException e) {
