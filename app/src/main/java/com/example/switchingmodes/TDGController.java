@@ -10,8 +10,6 @@ import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-//import android.widget.CompoundButton;
-//import android.widget.ToggleButton;
 
 import java.io.File;
 import java.io.IOException;
