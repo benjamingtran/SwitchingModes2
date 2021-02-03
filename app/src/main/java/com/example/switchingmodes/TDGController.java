@@ -21,9 +21,6 @@ import java.util.Map;
 public class TDGController extends AppCompatActivity {
     private TDGModel tdgMod;
 
-    //private Button btnInput1;
-    //private Button btnInput2;
-
     private HashMap<Character, Button> buttons;
 
     private void keyboardSetup() {
