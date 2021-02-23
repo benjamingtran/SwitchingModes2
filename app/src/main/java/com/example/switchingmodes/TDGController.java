@@ -51,6 +51,8 @@ public class TDGController extends AppCompatActivity {
         buttons.put('b', (Button)findViewById(R.id.bButton));
         buttons.put('n', (Button)findViewById(R.id.nButton));
         buttons.put('m', (Button)findViewById(R.id.mButton));
+        // spacebar, character { is one past z
+        buttons.put('{', (Button)findViewById(R.id.spacebar));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -83,33 +85,7 @@ public class TDGController extends AppCompatActivity {
             });
         }
 
-        //btnInput1 = (Button)findViewById(R.id.input1);
-        //btnInput2 = (Button)findViewById(R.id.input2);
-        /*
-        btnInput1.setOnClickListener(new View.OnClickListener(){
 
-                                         @Override
-                                         public void onClick(View v) {
-                                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                                                 tdgMod.input('1', SystemClock.elapsedRealtimeNanos());
-                                             }
-                                         }
-                                     }
-
-        );
-
-        btnInput2.setOnClickListener(new View.OnClickListener(){
-
-                                         @Override
-                                         public void onClick(View v) {
-                                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                                                 tdgMod.input('2', SystemClock.elapsedRealtimeNanos());
-                                             }
-                                         }
-                                     }
-
-        );
-        */
         try {
             tdgMod.setLogging(true);
         } catch (IOException e) {
